@@ -1,7 +1,7 @@
 {
   "name": "kpow",
   "version": "0.0.2",
-  "description": "Kafium PoW protocol for making network safer.",
+  "description": "Kafium PoW protocol for securing the network.",
   "license": "GPL-2.0",
   "engines": {
       "node": "14.x"
