@@ -4,8 +4,8 @@ function doWork (hash) {
   let nonce = 0
   let findingHash = crypto.createHash('ripemd160').update(hash + nonce).digest('hex')
   while (findingHash.substr(0, 2) !== '00') {
-    findingHash = crypto.createHash('ripemd160').update(hash + nonce).digest('hex')
     nonce += 1
+    findingHash = crypto.createHash('ripemd160').update(hash + nonce).digest('hex')
   }
   return nonce
 }
