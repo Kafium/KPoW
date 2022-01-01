@@ -1,18 +1,19 @@
 const crypto = require('crypto')
 
 function doWork (hash) {
-  let nonce = 0
-  let findingHash = crypto.createHash('ripemd160').update(hash + nonce).digest('hex')
-  while (findingHash.substr(0, 2) !== '00') {
-    nonce += 1
-    findingHash = crypto.createHash('ripemd160').update(hash + nonce).digest('hex')
+  let work = crypto.randomBytes(5).toString('hex')
+  let findingHash = crypto.createHash('ripemd160').update(hash + work).digest('hex')
+  while (findingHash.substring(0, 4) !== '0000') {
+    work = crypto.randomBytes(5).toString('hex')
+    findingHash = crypto.createHash('ripemd160').update(hash + work).digest('hex')
   }
-  return nonce
+  return work
 }
 
-function checkWork (hash, nonce) {
-  const work = crypto.createHash('ripemd160').update(hash + nonce).digest('hex')
-  return (work.substr(0, 2) === '00')
+function checkWork (hash, work) {
+  if (work.length !== 10) return false
+  const workHash = crypto.createHash('ripemd160').update(hash + work).digest('hex')
+  return (workHash.substring(0, 4) === '0000')
 }
 
 module.exports = {
