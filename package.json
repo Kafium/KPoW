@@ -1,6 +1,6 @@
 {
   "name": "kpow",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Kafium PoW protocol for securing the network.",
   "license": "GPL-2.0",
   "engines": {
